@@ -2,8 +2,8 @@ import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { LessonModule } from './lesson/lesson.module';
-import { join } from 'path';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { StudentModule } from './student/student.module';
 
 @Module({
   imports: [
@@ -22,6 +22,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       autoSchemaFile: true,
     }),
     LessonModule,
+    StudentModule,
   ],
   controllers: [],
   providers: [],
