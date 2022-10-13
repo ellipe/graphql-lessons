@@ -15,6 +15,10 @@ export class LessonService {
     return this.lessonRepository.findOneBy({ id });
   }
 
+  async getLessons() {
+    return this.lessonRepository.find();
+  }
+
   async createLesson(input: CreateLessonInput) {
     const lesson = this.lessonRepository.create(input);
     return this.lessonRepository.save(lesson);

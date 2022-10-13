@@ -3,15 +3,21 @@ import { CreateLessonInput } from './lesson.input';
 import { LessonService } from './lesson.service';
 import { LessonType } from './lesson.type';
 
-@Resolver((of) => LessonType)
+@Resolver(() => LessonType)
 export class LessonResolver {
   constructor(private lessonService: LessonService) {}
-  @Query((returns) => LessonType, { nullable: true })
+
+  @Query(() => LessonType, { nullable: true })
   lesson(@Args('id') id: string) {
     return this.lessonService.getLesson(id);
   }
 
-  @Mutation((returns) => LessonType)
+  @Query(() => [LessonType], { nullable: 'items' })
+  lessons() {
+    return this.lessonService.getLessons();
+  }
+
+  @Mutation(() => LessonType)
   createLesson(@Args('CreateLessonInput') input: CreateLessonInput) {
     return this.lessonService.createLesson(input);
   }
