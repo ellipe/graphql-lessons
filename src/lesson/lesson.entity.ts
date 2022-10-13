@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryColumn, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('lessons')
 export class LessonEntity {
@@ -13,4 +13,7 @@ export class LessonEntity {
 
   @Column({ name: 'end_date' })
   endDate: string;
+
+  @Column('text', { array: true, default: {} })
+  students: string[];
 }

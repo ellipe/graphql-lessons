@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { In, Repository } from 'typeorm';
 import { StudentEntity } from './student.entity';
 import { CreateStudentInput } from './student.input';
 
@@ -22,5 +22,9 @@ export class StudentService {
   async createStudent(input: CreateStudentInput) {
     const student = this.studentRepository.create(input);
     return this.studentRepository.save(student);
+  }
+
+  async getStudentsByIds(ids: string[]) {
+    return this.studentRepository.findBy({ id: In(ids) });
   }
 }

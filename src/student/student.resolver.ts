@@ -1,4 +1,12 @@
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import {
+  Args,
+  Mutation,
+  Parent,
+  Query,
+  ResolveField,
+  Resolver,
+} from '@nestjs/graphql';
+import { LessonEntity } from 'src/lesson/lesson.entity';
 import { CreateStudentInput } from './student.input';
 import { StudentService } from './student.service';
 import { StudentType } from './student.type';
